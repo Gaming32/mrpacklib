@@ -25,5 +25,5 @@ jobs:
         uses: actions/upload-artifact@v2
         if: ${{ matrix.java == 8 && matrix.os == 'ubuntu-latest' }}
         with:
-          name: super-loader-jar-artifact
-          path: target/super-loader-*.jar
+          name: mrpacklib-jar-artifact
+          path: target/mrpacklib-*.jar

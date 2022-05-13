@@ -1,10 +1,9 @@
-package io.github.gaming32.superloader;
+package io.github.gaming32.mrpacklib;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-import io.github.gaming32.mrpacklib.PackIndex;
 import io.github.gaming32.mrpacklib.util.GsonHelper;
 
 public class AppTest {
