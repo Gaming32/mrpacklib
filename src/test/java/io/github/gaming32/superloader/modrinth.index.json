@@ -1,0 +1,73 @@
+{
+  "formatVersion": 1,
+  "game": "minecraft",
+  "versionId": "0.1.0",
+  "name": "THE MODPACK",
+  "files": [
+    {
+      "path": "mods/agape_space_18_2-0.5.10.jar",
+      "hashes": {
+        "sha1": "f5fb6a563f79efa329b3ea7a7aebbcddb50230c4"
+      },
+      "downloads": [
+        "https://edge.forgecdn.net/files/3782/216/agape_space_18_2-0.5.10.jar"
+      ]
+    },
+    {
+      "path": "mods/badpackets-fabric-0.1.2.jar",
+      "hashes": {
+        "sha1": "098653c88addec413623a78c20e2f001e5647079"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/ftdbN0KK/versions/fabric-0.1.2/badpackets-fabric-0.1.2.jar",
+        "https://github.com/badasintended/badpackets/releases/download/0.1.2/badpackets-fabric-0.1.2.jar"
+      ]
+    },
+    {
+      "path": "mods/modmenu-3.2.1.jar",
+      "hashes": {
+        "sha1": "2366c41842dd070cb400aba8cb7d3241d175a71e"
+      },
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/mOgUt4GM/versions/3.2.1/modmenu-3.2.1.jar",
+        "https://github.com/TerraformersMC/ModMenu/releases/download/v3.2.1/modmenu-3.2.1.jar"
+      ]
+    },
+    {
+      "path": "mods/phosphor-fabric-mc1.18.x-0.8.1.jar",
+      "hashes": {
+        "sha1": "9b826d21b9cd999853a57c76b0c47ee4d9161dc9"
+      },
+      "env": {
+        "client": "optional",
+        "server": "optional"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/hEOCdOgW/versions/mc1.18.x-0.8.1/phosphor-fabric-mc1.18.x-0.8.1.jar",
+        "https://github.com/CaffeineMC/phosphor-fabric/releases/download/mc1.18.x-0.8.1/phosphor-fabric-mc1.18.x-0.8.1.jar"
+      ]
+    },
+    {
+      "path": "mods/sodium-fabric-mc1.18.2-0.4.1+build.15.jar",
+      "hashes": {
+        "sha1": "f839863a6be7014b8d80058ea1f361521148d049"
+      },
+      "env": {
+        "client": "optional",
+        "server": "unsupported"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/AANobbMI/versions/mc1.18.2-0.4.1/sodium-fabric-mc1.18.2-0.4.1%2Bbuild.15.jar",
+        "https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.18.2-0.4.1/sodium-fabric-mc1.18.2-0.4.1+build.15.jar"
+      ]
+    }
+  ],
+  "dependencies": {
+    "minecraft": "1.18.2",
+    "fabric-loader": "0.13.3"
+  }
+}
