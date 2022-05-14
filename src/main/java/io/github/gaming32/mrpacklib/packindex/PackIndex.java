@@ -1,4 +1,4 @@
-package io.github.gaming32.mrpacklib;
+package io.github.gaming32.mrpacklib.packindex;
 
 import java.util.List;
 

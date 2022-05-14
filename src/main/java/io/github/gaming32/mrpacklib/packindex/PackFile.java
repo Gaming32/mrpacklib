@@ -1,20 +1,14 @@
-package io.github.gaming32.mrpacklib;
+package io.github.gaming32.mrpacklib.packindex;
 
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-import com.google.gson.annotations.SerializedName;
-
+import io.github.gaming32.mrpacklib.Mrpack.EnvCompatibility;
+import io.github.gaming32.mrpacklib.Mrpack.EnvSide;
 import io.github.gaming32.mrpacklib.util.GsonHelper;
 
 public final class PackFile {
-    public static enum EnvCompatibility {
-        @SerializedName("optional") OPTIONAL,
-        @SerializedName("required") REQUIRED,
-        @SerializedName("unsupported") UNSUPPORTED
-    }
-
     public static final class FileEnv {
         private EnvCompatibility client;
         private EnvCompatibility server;
@@ -25,6 +19,10 @@ public final class PackFile {
 
         public EnvCompatibility getServer() {
             return server;
+        }
+
+        public EnvCompatibility get(EnvSide side) {
+            return side == EnvSide.CLIENT ? client : server;
         }
     }
 
