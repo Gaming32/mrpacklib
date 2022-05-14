@@ -5,9 +5,12 @@ jobs:
   build:
     strategy:
       matrix:
-        # Use these Java versions
-        java: [8, 11, 17]
-        # and run on both Linux and Windows
+        java: [
+          8,  # LTS
+          11, # LTS
+          17, # LTS
+          18  # Latest
+        ]
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     if: github.ref != 'refs/heads/gh-pages'
