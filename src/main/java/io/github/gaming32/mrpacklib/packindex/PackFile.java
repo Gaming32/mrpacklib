@@ -1,8 +1,11 @@
 package io.github.gaming32.mrpacklib.packindex;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import io.github.gaming32.mrpacklib.Mrpack.EnvCompatibility;
 import io.github.gaming32.mrpacklib.Mrpack.EnvSide;
@@ -26,10 +29,23 @@ public final class PackFile {
         }
     }
 
+    private static final Set<String> ALLOWED_HOSTS = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+
+    static {
+        ALLOWED_HOSTS.addAll(Arrays.asList(
+            "cdn.modrinth.com",
+            "edge.forgecdn.net",
+            "media.forgecdn.net",
+            "github.com",
+            "raw.githubusercontent.com"
+        ));
+    }
+
     private String path;
     private Map<String, byte[]> hashes;
     private FileEnv env;
     private List<URL> downloads;
+    private long fileSize = -1;
 
     public PackFile validate() throws IllegalArgumentException {
         if (path == null) {
@@ -38,14 +54,20 @@ public final class PackFile {
         if (hashes == null) {
             throw new IllegalArgumentException("missing hashes");
         }
-        if (!hashes.containsKey("sha1")) {
-            throw new IllegalArgumentException("missing hashes.sha1");
-        }
         if (hashes.containsValue(null)) {
             throw new IllegalArgumentException("hashes contains null hash");
         }
+        if (!hashes.containsKey("sha1")) {
+            throw new IllegalArgumentException("missing hashes.sha1");
+        }
         if (hashes.get("sha1").length != 20) {
             throw new IllegalArgumentException("hashes.sha1.length != 20");
+        }
+        if (!hashes.containsKey("sha512")) {
+            throw new IllegalArgumentException("missing hashes.sha512");
+        }
+        if (hashes.get("sha512").length != 64) {
+            throw new IllegalArgumentException("hashes.sha512.length != 64");
         }
         if (env == null) {
             env = new FileEnv();
@@ -62,8 +84,19 @@ public final class PackFile {
         if (downloads == null || downloads.size() == 0) {
             throw new IllegalArgumentException("missing downloads");
         }
-        if (downloads.contains(null)) {
-            throw new IllegalArgumentException("null download");
+        for (URL download : downloads) {
+            if (download == null) {
+                throw new IllegalArgumentException("null download");
+            }
+            if (!download.getProtocol().equals("https")) {
+                throw new IllegalArgumentException("download.protocol != \"https\"");
+            }
+            if (!ALLOWED_HOSTS.contains(download.getHost())) {
+                throw new IllegalArgumentException("\"" + download.getHost() + "\" not an allowed host");
+            }
+        }
+        if (fileSize == -1) {
+            throw new IllegalArgumentException("missing fileSize");
         }
         return this;
     }
@@ -82,6 +115,10 @@ public final class PackFile {
 
     public List<URL> getDownloads() {
         return downloads;
+    }
+
+    public long getFileSize() {
+        return fileSize;
     }
 
     @Override

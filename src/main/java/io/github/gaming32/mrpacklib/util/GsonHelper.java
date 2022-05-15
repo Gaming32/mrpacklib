@@ -30,10 +30,12 @@ public final class GsonHelper {
     private GsonHelper() {
     }
 
-    public static String toHexString(byte[] arr) {
+    private static final char[] HEX_CHARS = "0123456789abcdef".toCharArray();
+    private static String toHexString(byte[] arr) {
         StringBuilder result = new StringBuilder(arr.length << 1);
         for (byte v : arr) {
-            result.append(Integer.toHexString(v & 0xff));
+            result.append(HEX_CHARS[(v & 0xff) >> 4]);
+            result.append(HEX_CHARS[v & 0xf]);
         }
         return result.toString();
     }
