@@ -34,10 +34,12 @@ public final class PackFile {
     static {
         ALLOWED_HOSTS.addAll(Arrays.asList(
             "cdn.modrinth.com",
-            "edge.forgecdn.net",
-            "media.forgecdn.net",
             "github.com",
-            "raw.githubusercontent.com"
+            "raw.githubusercontent.com",
+            "gitlab.com",
+            // Despite CurseForge being removed from the spec, we continue to support it for compatibility.
+            "edge.forgecdn.net",
+            "media.forgecdn.net"
         ));
     }
 
